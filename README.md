@@ -80,30 +80,37 @@ Ikuti langkah mudah ini untuk menjalankan permainan di komputer anda:
 
 ## 🚀 Deploy to GitHub Pages (Cara Publish ke GitHub Pages)
 
-Project ini telah siap dikonfigurasi dengan **GitHub Actions** automatik. Anda hanya perlu tolak (*push*) kod ke GitHub:
+Project ini telah siap dikonfigurasikan khas untuk repository **`MATH-GAME`** (`https://masriahkarim.github.io/MATH-GAME/`).
 
-### Langkah 1: Tolak Kod ke GitHub Repository
+### Kaedah 1: Menggunakan GitHub Actions (Paling Disyorkan & Automatik)
+
+1. **Tolak (*push*) kod ke repository GitHub anda:**
+   ```bash
+   git add .
+   git commit -m "fix: Update GitHub Pages configuration with base path and build workflow"
+   git push origin main
+   ```
+
+2. **Aktifkan GitHub Actions di Settings GitHub:**
+   - Buka repository **`MATH-GAME`** di laman web GitHub.
+   - Klik tab **Settings** (ikon gear di atas).
+   - Di menu sebelah kiri, klik **Pages**.
+   - Pada bahagian **Source**, tukar pilihan kepada:
+     👉 **GitHub Actions** *(jangan guna Deploy from a branch)*.
+   
+3. **Selesai!**
+   - Workflow `.github/workflows/deploy.yml` akan secara automatik memasang pakej, menjalankan `npm run build`, dan memuat naik fail production yang lengkap ke GitHub Pages.
+   - Buka pautan: **https://masriahkarim.github.io/MATH-GAME/**
+
+---
+
+### Kaedah 2: Menggunakan `npm run deploy` (Deploy Branch `gh-pages`)
+
+Jika anda lebih suka deploy terus dari komputer anda:
 ```bash
-git init
-git add .
-git commit -m "feat: Initial commit for MATH RUSH game"
-git branch -M main
-git remote add origin https://github.com/USERNAME/NAMA-REPO-ANDA.git
-git push -u origin main
+npm run deploy
 ```
-
-### Langkah 2: Aktifkan GitHub Pages dalam Repository Settings
-1. Buka repository anda di laman web **GitHub**.
-2. Klik tab **Settings** (di bahagian atas repository).
-3. Di menu sebelah kiri, klik **Pages** (di bawah seksyen *Code and automation*).
-4. Di bawah tajuk **Build and deployment** > **Source**:
-   - Pilih **GitHub Actions** (bukan *Deploy from a branch*).
-5. GitHub Actions workflow (`.github/workflows/deploy.yml`) akan bermula secara automatik!
-6. Pergi ke tab **Actions** untuk melihat proses *Build and Deploy*.
-7. Selepas 1-2 minit, URL permainan anda akan dipaparkan di bahagian atas tab **Settings > Pages**:
-   ```
-   https://USERNAME.github.io/NAMA-REPO-ANDA/
-   ```
+Perintah ini akan menjalankan `npm run build` dan menolak fail production (`dist/`) ke branch `gh-pages` secara automatik. Kemudian di **Settings > Pages**, pilih **Deploy from a branch** -> branch **gh-pages** -> folder **/ (root)**.
 
 ---
 
